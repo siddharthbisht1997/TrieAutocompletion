@@ -1,2 +1,2 @@
-# Word-Recommendation-using-tries
+# Word Recommendation using Tries
 Recommending words using Tries
