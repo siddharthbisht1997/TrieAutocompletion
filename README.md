@@ -1,24 +1,55 @@
-# Foobar
+# Word Autocompletion using Tries
 
-Foobar is a Python library for dealing with word pluralization.
+TrieRecommender is python class capable of giving autocomplete suggestions for the entered query.
 
 ## Installation
-
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
-```bash
-pip install foobar
-```
+You can download the Module from here or even copy the code.
 
 ## Usage
 
-```python
-import foobar
+Import the Trie Recommender
 
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
+```python
+from Trie.TrieRecommender import TrieRecommender
 ```
+
+Create the Object of the Trie Recommender
+```python
+Recommender = TrieRecommender()
+```
+Get the Vocabulary, the Recommender only accepts Lists to build the Trie
+```python
+vocab_file = "vocabulary.txt"     #Add the file path here
+with open(vocab_file,"r") as file:
+  vocabulary = file.read().split("\n")
+```
+Call the Build function of the TrieRecommender Class
+```python:
+Recommender.build(vocabulary)
+```
+You can see the entire vocabulary as well using the get_vocabulary method, you are required to send in the root node of the Recommender
+```python:
+root = Recommender.root
+Recommender.get_vocabulary(root)
+```
+You can search for a word as well
+```python:
+word = input("Enter word to search -> ")
+Recommender.search(word)
+```
+You can search for a word as well
+```python:
+word = input("Enter word to search -> ")
+Recommender.search(word)
+```
+Use the Autocomplete method to get suggestions, the Autocomplete method returns a list
+```python:
+query = input("Enter the query word -> ")
+suggestions = Recommender.autocomplete(query)
+print("Possible Sugesstions are {}".format(suggestions))
+```
+
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
